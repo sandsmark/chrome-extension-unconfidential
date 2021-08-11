@@ -1,0 +1,24 @@
+{
+   "author": "martin",
+   "permissions": [
+    "<all_urls>"
+  ],
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "script.js" ],
+      "matches": [ "*://*/*" ],
+      "match_about_blank": true,
+      "run_at": "document_start"
+   } ],
+   "description": "Allows interacting with/copying from confidential mode",
+   "icons": {
+      "128": "icon128.png",
+      "32": "icon32.png"
+   },
+   "browser_action": {},
+   "manifest_version": 2,
+   "name": "unconfidential gmail",
+   "short_name": "AAD",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0"
+}
