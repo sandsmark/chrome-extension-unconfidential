@@ -18,7 +18,36 @@
 
     // Neuter the dumb confidential shit, I like to select the text I read
     if (window.location.hostname.indexOf("mail.google.com") != -1) { // lgtm [js/incomplete-url-substring-sanitization]
-        setGetSet(window, 'getSelection', () => function() { console.log("tried window getselection"); }, () => function() { });
+        const orig_getSelection = window.getSelection;
+        setGetSet(window, 'getSelection',
+            () => function() {
+                var sel = orig_getSelection();
+                if (!sel.anchorNode) {
+                    return sel;
+                }
+                if (sel.anchorNode.parentElement.contentEditable) {
+                    return sel;
+                }
+
+                console.log("tried window getselection");
+                //console.trace();
+                return {
+                    'addRange': function() {},
+                    'anchorNode': null,
+                    'anchorOffset': 0,
+                    'baseNode': null,
+                    'baseOffset': 0,
+                    'extentNode': null,
+                    'extentOffset': 0,
+                    'focusNode': null,
+                    'focusOffset': 0,
+                    'isCollapsed': true,
+                    'rangeCount': 0,
+                    'type': "None"
+                };
+            },
+            () => function() { }
+        );
         setGetSet(document, 'getSelection', () => function() { console.log("tried document getselection"); }, () => function() { });
 
         // Just in case they try more in the future, we can try this
