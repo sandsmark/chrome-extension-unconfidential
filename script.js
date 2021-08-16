@@ -60,9 +60,19 @@
             addStyleString(".div { user-select: auto !important; }");
             addStyleString(".p { user-select: auto !important; }");
             addStyleString(".an { user-select: auto !important; }");
+
+            //const messages = document.querySelectorAll("[data-legacy-message-id]");
+            //for (var i=0; i<messages.length; i++) {
+            //    if (messages[i].innerText.indexOf('You do not have the option to forward, copy, print, or download this email') === -1) {
+            //        continue;
+            //    }
+            //    chrome.runtime.sendMessage({content: messages[i].innerHTML}, function(response) {
+            //}
         }, 100);
     }
+
 } + ')();' ;
+
 
 
 // Create temporary element
