@@ -6,7 +6,7 @@
    "content_scripts": [ {
       "all_frames": true,
       "js": [ "script.js" ],
-      "matches": [ "*://*/*" ],
+      "matches": [ "*://mail.google.com/*" ],
       "match_about_blank": true,
       "run_at": "document_start"
    } ],
